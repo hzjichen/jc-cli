@@ -2,7 +2,6 @@ import { defineConfig, loadEnv } from 'vite';
 import path from 'path';
 import createVitePlugins from './vite/plugins';
 import { visualizer } from 'rollup-plugin-visualizer';
-import eslintPlugin from 'vite-plugin-eslint';
 
 export default defineConfig(({ mode, command }) => {
 	const env = loadEnv(mode, process.cwd());
@@ -10,9 +9,6 @@ export default defineConfig(({ mode, command }) => {
 	const plugins = [
 		createVitePlugins(env, command === 'build'),
 		mode === 'analysis' && visualizer({ open: true, filename: 'dist/analysis.html' }),
-		eslintPlugin({
-			include: ['src/**/*.ts', 'src/**/*.vue', 'src/*.ts', 'src/*.vue'],
-		}),
 	];
 	return {
 		base: VITE_APP_ENV === 'production' ? '/' : '/',

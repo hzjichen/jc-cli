@@ -3,7 +3,7 @@ import compression from "vite-plugin-compression";
 export default function createCompression(env) {
 	const { VITE_BUILD_COMPRESS } = env;
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	const plugin: any[] = [];
+	const plugin = [];
 	if (VITE_BUILD_COMPRESS) {
 		const compressList = VITE_BUILD_COMPRESS.split(",");
 		if (compressList.includes("gzip")) {

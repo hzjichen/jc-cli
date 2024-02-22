@@ -18,7 +18,6 @@ module.exports = {
 	  browser: true,
 	  node: true,
 	  es2022: true,
-	  'vue/setup-compiler-macros': true,
 	},
 	plugins: ['vue', '@typescript-eslint', 'import', 'prettier'],
 	extends: [
@@ -26,25 +25,29 @@ module.exports = {
 	  'plugin:@typescript-eslint/recommended',
 	  'eslint:recommended',
 	  'plugin:prettier/recommended',
-	  './.eslintrc-auto-import.json',
 	],
 	// add your custom rules here
 	// it is base on https://github.com/vuejs/eslint-config-vue
 	rules: {
 	  'prettier/prettier': 'error',
 	  'vue/require-default-prop': 'off',
-	  '@typescript-eslint/no-empty-function': 'off',
-	  '@typescript-eslint/no-explicit-any': ['off'],
-	  'vue/one-component-per-file': 'off',
 	  'arrow-body-style': 'off',
 	  'prefer-arrow-callback': 'off',
-	  'vue/max-attributes-per-line': 'off',
+	  'vue/max-attributes-per-line': [
+		2,
+		{
+		  singleline: 10,
+		  multiline: {
+			max: 1,
+		  },
+		},
+	  ],
 	  'vue/multi-word-component-names': 'off',
 	  'vue/singleline-html-element-content-newline': 'off',
 	  'vue/multiline-html-element-content-newline': 'off',
 	  'vue/name-property-casing': ['error', 'PascalCase'],
 	  'vue/no-v-html': 'off',
-	  'vue/no-v-for-template-key': 'off',
+	  '@typescript-eslint/no-explicit-any': 'off',
 	  'accessor-pairs': 2,
 	  'arrow-spacing': [
 		2,
@@ -140,7 +143,13 @@ module.exports = {
 	  'no-irregular-whitespace': 2,
 	  'no-iterator': 2,
 	  'no-label-var': 2,
-	  'no-labels': 'off',
+	  'no-labels': [
+		2,
+		{
+		  allowLoop: false,
+		  allowSwitch: false,
+		},
+	  ],
 	  'no-lone-blocks': 2,
 	  'no-mixed-spaces-and-tabs': 2,
 	  'no-multi-spaces': 2,
@@ -173,7 +182,7 @@ module.exports = {
 	  'no-this-before-super': 2,
 	  'no-throw-literal': 2,
 	  'no-trailing-spaces': 2,
-	  'no-undef': 'off',
+	  'no-undef': 2,
 	  'no-undef-init': 2,
 	  'no-unexpected-multiline': 2,
 	  'no-unmodified-loop-condition': 2,
@@ -185,7 +194,13 @@ module.exports = {
 	  ],
 	  'no-unreachable': 2,
 	  'no-unsafe-finally': 2,
-	  'no-unused-vars': 'off',
+	  'no-unused-vars': [
+		2,
+		{
+		  vars: 'all',
+		  args: 'none',
+		},
+	  ],
 	  'no-useless-call': 2,
 	  'no-useless-computed-key': 2,
 	  'no-useless-constructor': 2,
